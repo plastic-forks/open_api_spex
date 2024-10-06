@@ -1,8 +1,9 @@
 defmodule OpenApiSpex.Cast do
-  @moduledoc "Cast and validate a value against an OpenApiSpex schema"
+  @moduledoc """
+  Casts and validates values.
+  """
 
-  alias OpenApiSpex.{Reference, Schema}
-  alias OpenApiSpex.Reference
+  alias OpenApiSpex.{Schema, Reference}
 
   alias OpenApiSpex.Cast.{
     AllOf,
@@ -47,21 +48,15 @@ defmodule OpenApiSpex.Cast do
             opts: []
 
   @doc ~S"""
-  Cast and validate a value against the given schema.
+  Casts and validates a value against the given schema.
 
-  Recognizes all the types defined in Open API (itself a superset of JSON Schema).
-
-  JSON Schema types:
-  [https://json-schema.org/latest/json-schema-core.html#rfc.section.4.2.1](https://json-schema.org/latest/json-schema-core.html#rfc.section.4.2.1)
-
-  Open API primitive types:
-  [https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#data-types](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#data-types)
+  It recognizes all the types defined in Open API (itself a superset of JSON Schema).
 
   For an `:object` schema type, the cast operation returns a map with atom keys.
 
   ## Examples
 
-      iex> alias OpenApiSpex.{Cast, Schema}
+      iex> alias OpenApiSpex.{Schema, Cast}
       iex> schema = %Schema{type: :string}
       iex> Cast.cast(schema, "a string")
       {:ok, "a string"}
@@ -97,6 +92,10 @@ defmodule OpenApiSpex.Cast do
           }
         ]
       }
+
+  ## References
+
+    * [Open API primitive types](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md#data-types)
 
   """
 

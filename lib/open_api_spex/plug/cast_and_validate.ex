@@ -1,8 +1,20 @@
 defmodule OpenApiSpex.Plug.CastAndValidate do
   @moduledoc """
-  Module plug that will cast and validate the `Conn.params` and `Conn.body_params` according to the schemas defined for the operation.
-  Note that when using this plug, the body params are no longer merged into `Conn.params` and must be read from `Conn.body_params`
-  separately.
+  Module plug for casting and validating the `conn.params` and `conn.body_params`
+  according to the schemas defined for the operations.
+
+  Casted and validated `conn.params` and `conn.body_params` will be stored into
+  `conn.private.open_api_spex`. They can be obtained by using helper functions:
+
+    * `OpenApiSpex.params/1`
+    * `OpenApiSpex.body_params/1`
+
+  > #### Note {: .info}
+  >
+  > When using this plug, the `conn.body_params` is no longer merged into
+  > `conn.params` and must be read from `conn.body_params` separately.
+
+  ## Usage
 
   The operation_id can be given at compile time as an argument to `init`:
 

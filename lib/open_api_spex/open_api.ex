@@ -54,14 +54,14 @@ defmodule OpenApiSpex.OpenApi do
       @impl OpenApiSpex.OpenApi
       def spec do
         %OpenApi{
-          servers: [
-            # Populate the Server info from a phoenix endpoint
-            Server.from_endpoint(MyAppWeb.Endpoint)
-          ],
           info: %Info{
             title: "My App",
             version: "1.0"
           },
+          servers: [
+            # Populate the Server info from a phoenix endpoint
+            Server.from_endpoint(MyAppWeb.Endpoint)
+          ],
           # populate the paths from a phoenix router
           paths: Paths.from_router(MyAppWeb.Router)
         }
