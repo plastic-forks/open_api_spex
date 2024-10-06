@@ -19,27 +19,27 @@ defmodule OpenApiSpex.Plug.CastAndValidate do
   The operation_id can be given at compile time as an argument to `init`:
 
       plug OpenApiSpex.Plug.CastAndValidate,
-        json_render_error_v2: true,
         operation_id: "MyApp.ShowUser"
 
   For phoenix applications, the operation_id can be obtained at runtime automatically.
 
       defmodule MyAppWeb.UserController do
         use Phoenix.Controller
-        plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+        plug OpenApiSpex.Plug.CastAndValidate
         ...
       end
+
+  # TODO
 
   Casted params and body params are always stored in `conn.private`.
   The option `:replace_params` can be set to false to avoid overwriting conn `:body_params` and `:params`
   with their casted version.
 
       plug OpenApiSpex.Plug.CastAndValidate,
-        json_render_error_v2: true,
         operation_id: "MyApp.ShowUser",
         replace_params: false
 
-  If you want customize the error response, you can provide the `:render_error` option to register a plug which creates
+  If you want customize the error response, you can provide the `:error_render` option to register a plug which creates
   a custom response in the case of a validation error.
 
   ## Example
@@ -63,30 +63,25 @@ defmodule OpenApiSpex.Plug.CastAndValidate do
       end
   """
 
+  alias Plug.Conn
+  alias OpenApiSpex.Plug.PutApiSpec
+  alias __MODULE__.ErrorRender
+
   @behaviour Plug
 
-  alias OpenApiSpex.Plug.PutApiSpec
-  alias Plug.Conn
+  @default_opts %{
+    error_render: ErrorRender.JSON
+  }
 
-  @impl Plug
+  @impl true
   def init(opts) do
-    opts = Map.new(opts)
-
-    error_renderer =
-      if opts[:json_render_error_v2],
-        do: OpenApiSpex.Plug.JsonRenderErrorV2,
-        else: OpenApiSpex.Plug.JsonRenderError
-
-    Map.put_new(opts, :render_error, error_renderer)
+    Map.merge(@default_opts, Map.new(opts))
   end
 
-  @impl Plug
+  @impl true
   def call(
-        conn = %{private: %{open_api_spex: _}},
-        %{
-          operation_id: operation_id,
-          render_error: render_error
-        } = opts
+        %{private: %{open_api_spex: _}} = conn,
+        %{operation_id: operation_id} = opts
       ) do
     {spec, operation_lookup} = PutApiSpec.get_spec_and_operation_lookup(conn)
     operation = operation_lookup[operation_id]
@@ -99,22 +94,20 @@ defmodule OpenApiSpex.Plug.CastAndValidate do
         conn
 
       {:error, errors} ->
-        errors = render_error.init(errors)
-
         conn
-        |> render_error.call(errors)
+        |> opts.error_render.render(errors)
         |> Conn.halt()
     end
   end
 
   def call(
-        conn = %{
+        %{
           private: %{
             phoenix_controller: controller,
             phoenix_action: action,
             open_api_spex: _
           }
-        },
+        } = conn,
         opts
       ) do
     {_spec, operation_lookup} = PutApiSpec.get_spec_and_operation_lookup(conn)
@@ -152,12 +145,14 @@ defmodule OpenApiSpex.Plug.CastAndValidate do
         raise "operationId was not found in action API spec"
 
       {:found_it, operation} ->
-        call(conn, opts |> Map.put(:operation_id, operation.operationId))
+        opts = Map.put(opts, :operation_id, operation.operationId)
+        call(conn, opts)
     end
   end
 
   def call(_conn = %{private: %{open_api_spex: _pd}}, _opts) do
-    raise ":operation_id was neither provided nor inferred from conn. Consider putting plug OpenApiSpex.Plug.CastAndValidate rather into your phoenix controller."
+    raise ":operation_id was neither provided nor inferred from conn. " <>
+            "Consider putting `plug #{inspect(__MODULE__)}` rather into your phoenix controller."
   end
 
   def call(_conn, _opts) do

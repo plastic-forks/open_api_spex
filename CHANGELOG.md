@@ -5,117 +5,116 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
 ## v3.21.2 - 2024-10-02
 
-* Use latest version of SwaggerUI by default, but allow it to be configured by @jarmo in https://github.com/open-api-spex/open_api_spex/pull/628
-* Exporting to YAML preserves nil values in examples by @zorbash in f3cd32bee2a
+- Use latest version of SwaggerUI by default, but allow it to be configured by @jarmo in https://github.com/open-api-spex/open_api_spex/pull/628
+- Exporting to YAML preserves nil values in examples by @zorbash in f3cd32bee2a
 
 ## v3.21.1 - 2024-09-17
 
-* Fix schema inspection argument error by @zorbash. https://github.com/open-api-spex/open_api_spex/issues/636
+- Fix schema inspection argument error by @zorbash. https://github.com/open-api-spex/open_api_spex/issues/636
 
 ## v3.21.0 - 2024-09-12
 
-* Update dev dependencies and example apps by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/624
-* Support casting decimals by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/634
-* Support decoding operations with :servers. by @loguntsov in https://github.com/open-api-spex/open_api_spex/pull/635
+- Update dev dependencies and example apps by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/624
+- Support casting decimals by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/634
+- Support decoding operations with :servers. by @loguntsov in https://github.com/open-api-spex/open_api_spex/pull/635
 
 ## v3.20.1 - 2024-07-31
 
-* Support custom error messages in custom validators by @GregorGrasselli in https://github.com/open-api-spex/open_api_spex/pull/621
-* Update Schema.example/2 typespec to allow references by @zorbash in 5ec452f
+- Support custom error messages in custom validators by @GregorGrasselli in https://github.com/open-api-spex/open_api_spex/pull/621
+- Update Schema.example/2 typespec to allow references by @zorbash in 5ec452f
 
 ## v3.20.0 - 2024-07-10
 
-* Respect minLength when generating string examples by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/608
-* Accept read_write_scope from opts when calling cast functions directly by @albertored in https://github.com/open-api-spex/open_api_spex/pull/572
-* Allow Poison v6 to be used by @hkrutzer in https://github.com/open-api-spex/open_api_spex/pull/616
-* chore: Drop build matrix support for elixir 1.11, 1.12, 1.13 and OTP 22 by @mbuhot in https://github.com/open-api-spex/open_api_spex/pull/619
-* improvement: use struct spec to avoid double `%` in struct inspect by @zachdaniel in https://github.com/open-api-spex/open_api_spex/pull/613
-* Feat: add `--check` option in Mix tasks to compare the generated spec with a previously generated file by @davidebriani in https://github.com/open-api-spex/open_api_spex/pull/618
-* fix: cast numbers as floats by @David-Klemenc in https://github.com/open-api-spex/open_api_spex/pull/611
+- Respect minLength when generating string examples by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/608
+- Accept read_write_scope from opts when calling cast functions directly by @albertored in https://github.com/open-api-spex/open_api_spex/pull/572
+- Allow Poison v6 to be used by @hkrutzer in https://github.com/open-api-spex/open_api_spex/pull/616
+- chore: Drop build matrix support for elixir 1.11, 1.12, 1.13 and OTP 22 by @mbuhot in https://github.com/open-api-spex/open_api_spex/pull/619
+- improvement: use struct spec to avoid double `%` in struct inspect by @zachdaniel in https://github.com/open-api-spex/open_api_spex/pull/613
+- Feat: add `--check` option in Mix tasks to compare the generated spec with a previously generated file by @davidebriani in https://github.com/open-api-spex/open_api_spex/pull/618
+- fix: cast numbers as floats by @David-Klemenc in https://github.com/open-api-spex/open_api_spex/pull/611
 
 ## v3.19.1 - 2024-05-17
 
-* Add notice that body params are not merged into Conn.params whne using cast and validate plug by @hamir-suspect in #589
-* Set nonces on `<script>` and `<style>` elements if configured by @nathanalderson in #593
-* Ensure operation_id is always set on conn.private by @msutkowski in #606
+- Add notice that body params are not merged into Conn.params whne using cast and validate plug by @hamir-suspect in #589
+- Set nonces on `<script>` and `<style>` elements if configured by @nathanalderson in #593
+- Ensure operation_id is always set on conn.private by @msutkowski in #606
 
 ## v3.19.0 - 2024-04-30
 
-* Support response code ranges by @zorbash in 8898859da1
+- Support response code ranges by @zorbash in 8898859da1
 
 ## v3.18.3 - 2024-03-15
 
-* Relax dependency constraint on ymlr to allow version ~> 5.0 by @egze in https://github.com/open-api-spex/open_api_spex/pull/586
+- Relax dependency constraint on ymlr to allow version ~> 5.0 by @egze in https://github.com/open-api-spex/open_api_spex/pull/586
 
 ## v3.18.2 - 2024-01-26
 
-* Fix 'AllOf cast returns a map, but I expected a struct' by @angelikatyborska in https://github.com/open-api-spex/open_api_spex/pull/592
+- Fix 'AllOf cast returns a map, but I expected a struct' by @angelikatyborska in https://github.com/open-api-spex/open_api_spex/pull/592
 
 ## v3.18.1 - 2023-12-19
 
-* Fix `assert_operation_response/2` header lookup by @msutkowski in https://github.com/open-api-spex/open_api_spex/pull/584
-* Exclude empty paths (`operation false`) from generated spec by @alisinabh in https://github.com/open-api-spex/open_api_spex/pull/583
-* Cast discriminator when no title present (#574) by @albertored in https://github.com/open-api-spex/open_api_spex/pull/574
-* Docstest Operation.parameter/5 by @zorbash
-* Document the spec export task `--filename` option by @zorbash
+- Fix `assert_operation_response/2` header lookup by @msutkowski in https://github.com/open-api-spex/open_api_spex/pull/584
+- Exclude empty paths (`operation false`) from generated spec by @alisinabh in https://github.com/open-api-spex/open_api_spex/pull/583
+- Cast discriminator when no title present (#574) by @albertored in https://github.com/open-api-spex/open_api_spex/pull/574
+- Docstest Operation.parameter/5 by @zorbash
+- Document the spec export task `--filename` option by @zorbash
 
 ## v3.18.0 - 2023-08-23
 
-* Relax dependency constraint on ymlr to allow version ~> 4.0 by @arcanemachine in https://github.com/open-api-spex/open_api_spex/pull/544
-* Fix deprecation warning on Elixir 1.15, require Elixir 1.11, adapt CI by @thbar in https://github.com/open-api-spex/open_api_spex/pull/550
-* Add `--quiet` option for spec generation by @Cowa in https://github.com/open-api-spex/open_api_spex/pull/557
-* Fix casting non-objects against discriminator #551 by @gianluca-nitti in https://github.com/open-api-spex/open_api_spex/pull/552
-* feat: add assert_operation_response, assert_raw_schema by @msutkowski in https://github.com/open-api-spex/open_api_spex/pull/545
+- Relax dependency constraint on ymlr to allow version ~> 4.0 by @arcanemachine in https://github.com/open-api-spex/open_api_spex/pull/544
+- Fix deprecation warning on Elixir 1.15, require Elixir 1.11, adapt CI by @thbar in https://github.com/open-api-spex/open_api_spex/pull/550
+- Add `--quiet` option for spec generation by @Cowa in https://github.com/open-api-spex/open_api_spex/pull/557
+- Fix casting non-objects against discriminator #551 by @gianluca-nitti in https://github.com/open-api-spex/open_api_spex/pull/552
+- feat: add assert_operation_response, assert_raw_schema by @msutkowski in https://github.com/open-api-spex/open_api_spex/pull/545
 
 ## v3.17.3 - 2023-05-30
 
-* Raise meaningful error message when `SchemaResolver.resolve_schema_modules_from_schema` failed to pattern match by @yuchunc in https://github.com/open-api-spex/open_api_spex/pull/541
-* Support structs as inputs when casting objects by @gianluca-nitti in https://github.com/open-api-spex/open_api_spex/pull/529
-* Fix #540 `PathItem.from_routes/1` dialyzer warnings - @zorbash - 055c8e0131a4f8
+- Raise meaningful error message when `SchemaResolver.resolve_schema_modules_from_schema` failed to pattern match by @yuchunc in https://github.com/open-api-spex/open_api_spex/pull/541
+- Support structs as inputs when casting objects by @gianluca-nitti in https://github.com/open-api-spex/open_api_spex/pull/529
+- Fix #540 `PathItem.from_routes/1` dialyzer warnings - @zorbash - 055c8e0131a4f8
 
 ## v3.17.2 - 2023-05-26
 
-* Fix `Schema.example/2` for `anyOf` - @zorbash - 3046c68
+- Fix `Schema.example/2` for `anyOf` - @zorbash - 3046c68
 
 ## v3.17.1 - 2023-05-22
 
-* Add missing `Reference.resolve_response/2` - @zorbash - a5bd81dac
+- Add missing `Reference.resolve_response/2` - @zorbash - a5bd81dac
 
 ## v3.17.0 - 2023-05-18
 
-* Support passing a `%Reference{}` as a response when doing controller specs by @mracos in https://github.com/open-api-spex/open_api_spex/pull/532
-* Implement `OpenApiSpex.Schema.example/2` which resolves references - @zorbash - 45a26f045776
+- Support passing a `%Reference{}` as a response when doing controller specs by @mracos in https://github.com/open-api-spex/open_api_spex/pull/532
+- Implement `OpenApiSpex.Schema.example/2` which resolves references - @zorbash - 45a26f045776
 
 ## v3.16.4- 2023-05-17
 
-* Ensure schemas with discriminator work with atom-keyed maps - a7b8067a7a
-* Ensure spec decoding converts `required` items into atoms for `allOf` / `anyOf` / `oneOf` - a7b8067a7a
+- Ensure schemas with discriminator work with atom-keyed maps - a7b8067a7a
+- Ensure spec decoding converts `required` items into atoms for `allOf` / `anyOf` / `oneOf` - a7b8067a7a
 
 ## v3.16.3 - 2023-05-02
 
-* Keep discriminator errors relevant by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/533
-* Avoid compile time dependencies by @doorgan in https://github.com/open-api-spex/open_api_spex/pull/536
+- Keep discriminator errors relevant by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/533
+- Avoid compile time dependencies by @doorgan in https://github.com/open-api-spex/open_api_spex/pull/536
 
 ## v3.16.2 - 2023-04-13
 
-* Infer moduledoc from schema by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/525
-* Fix typespec and add example to Paths.from_routes/1 by @thiagogsr in https://github.com/open-api-spex/open_api_spex/pull/534
+- Infer moduledoc from schema by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/525
+- Fix typespec and add example to Paths.from_routes/1 by @thiagogsr in https://github.com/open-api-spex/open_api_spex/pull/534
 
 ## v3.16.1 - 2023-02-07
 
-* Accept dates and datetimes in formatted string schemas by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/524
+- Accept dates and datetimes in formatted string schemas by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/524
 
 ## v3.16.0 - 2022-11-23
 
-* Optimise property counting for object validations by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/514
-* Omit required from schemas when list is empty by @mbuhot in https://github.com/open-api-spex/open_api_spex/pull/515
+- Optimise property counting for object validations by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/514
+- Omit required from schemas when list is empty by @mbuhot in https://github.com/open-api-spex/open_api_spex/pull/515
 
 ## v3.15.0 - 2022-11-02
 
-* Resolve schema modules in discriminator mapping by @mbuhot in https://github.com/open-api-spex/open_api_spex/pull/511
+- Resolve schema modules in discriminator mapping by @mbuhot in https://github.com/open-api-spex/open_api_spex/pull/511
 
 ## v3.14.0 - 2022-10-23
 
@@ -146,7 +145,7 @@ Thanks to the contributions of the community
 
 * Docs: Document OpenApiSpex.Plug.NoneCache #480 by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/480
 * Enhancement: Improve example apps #481 by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/481
-* Infrastructure: Fix CI workflow  by @mbuhot
+* Infrastructure: Fix CI workflow by @mbuhot
 * Enhancement: Fix compilation warnings #479 by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/479
 * Enhancement: Allow to configure casting to not automatically populate default values #460 by @albertored in https://github.com/open-api-spex/open_api_spex/pull/460
 * Fix: (UndefinedFunctionError) #447 by @rolandtritsch in https://github.com/open-api-spex/open_api_spex/pull/447
@@ -201,7 +200,7 @@ Thanks to the contributions of the community
 * Fix: Do not accepting float number in integer type by @wingyplus in https://github.com/open-api-spex/open_api_spex/pull/468
 * Fix: anyOf cast crash when Cast.cast return a struct by @wingyplus in https://github.com/open-api-spex/open_api_spex/pull/469
 * Fix: Decoding of discriminators when `type: object` is present by @albertored in https://github.com/open-api-spex/open_api_spex/pull/471
-* Fix: Correctly cast not map bodies (plug puts them under _json key) by @albertored in https://github.com/open-api-spex/open_api_spex/pull/470
+* Fix: Correctly cast not map bodies (plug puts them under \_json key) by @albertored in https://github.com/open-api-spex/open_api_spex/pull/470
 * Enhancement: Add YAML formatter #463 by @lazebny in https://github.com/open-api-spex/open_api_spex/pull/464
 * Enhancement: use cache adapter at runtime instead of compile time for PutApiSpec by @Eein in https://github.com/open-api-spex/open_api_spex/pull/461
 * Infrastructure: Build and publish a hex.pm package automatically by @zorbash in https://github.com/open-api-spex/open_api_spex/pull/474
@@ -456,7 +455,7 @@ New API
 ```elixir
 defmodule PhoenixAppWeb.UserController do
   use PhoenixAppWeb, :controller
-  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  plug OpenApiSpex.Plug.CastAndValidate
 end
 ```
 

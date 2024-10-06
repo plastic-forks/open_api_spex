@@ -9,7 +9,7 @@ defmodule PhoenixAppWeb.UserControllerWithStructSpecs do
   alias PhoenixApp.{Accounts, Accounts.User}
   alias PhoenixAppWeb.Schemas
 
-  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  plug OpenApiSpex.Plug.CastAndValidate
 
   @doc """
   The controller will need to define a callback function `open_api_operation/1`

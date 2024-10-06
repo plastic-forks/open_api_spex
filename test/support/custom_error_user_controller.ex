@@ -5,22 +5,17 @@ defmodule OpenApiSpexTest.CustomErrorUserController do
   alias OpenApiSpexTest.Schemas
   alias Plug.Conn
 
-  defmodule CustomRenderErrorPlug do
-    @behaviour Plug
+  defmodule CustomErrorRender do
+    @behaviour OpenApiSpex.Plug.CastAndValidate.ErrorRender
 
-    alias Plug.Conn
-
-    @impl Plug
-    def init(opts), do: opts
-
-    @impl Plug
-    def call(conn, errors) do
+    @impl true
+    def render(conn, errors) do
       errors = errors |> Enum.map(&OpenApiSpex.error_message/1) |> Enum.join(",")
       conn |> Conn.send_resp(400, "#{errors}")
     end
   end
 
-  plug OpenApiSpex.Plug.CastAndValidate, render_error: CustomRenderErrorPlug
+  plug OpenApiSpex.Plug.CastAndValidate, error_render: CustomErrorRender
 
   @doc """
   List users

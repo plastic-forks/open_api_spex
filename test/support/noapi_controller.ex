@@ -4,7 +4,7 @@ defmodule OpenApiSpexTest.NoApiController do
   use Phoenix.Controller
   use OpenApiSpex.ControllerSpecs
 
-  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  plug OpenApiSpex.Plug.CastAndValidate
 
   operation :noapi, false
 

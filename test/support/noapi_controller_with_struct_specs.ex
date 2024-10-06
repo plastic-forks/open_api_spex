@@ -3,7 +3,7 @@ defmodule OpenApiSpexTest.NoApiControllerWithStructSpecs do
 
   use Phoenix.Controller
 
-  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  plug OpenApiSpex.Plug.CastAndValidate
 
   def open_api_operation(action) do
     apply(__MODULE__, :"#{action}_operation", [])

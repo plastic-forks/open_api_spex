@@ -1,11 +1,10 @@
 defmodule OpenApiSpexTest.Router do
   use Phoenix.Router
   alias Plug.Parsers
-  alias OpenApiSpex.Plug.PutApiSpec
 
   pipeline :api do
     plug :accepts, ["json"]
-    plug PutApiSpec, module: OpenApiSpexTest.ApiSpec
+    plug OpenApiSpex.Plug.PutApiSpec, module: OpenApiSpexTest.ApiSpec
     plug Parsers, parsers: [:json], pass: ["text/*"], json_decoder: Jason
   end
 

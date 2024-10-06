@@ -7,7 +7,6 @@ defmodule OpenApiSpexTest.UserNoReplaceController do
   alias OpenApiSpexTest.Schemas
 
   plug OpenApiSpex.Plug.CastAndValidate,
-    json_render_error_v2: true,
     replace_params: false
 
   @doc """

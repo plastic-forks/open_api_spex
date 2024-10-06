@@ -9,7 +9,7 @@ defmodule OpenApiSpexTest.UtilityController do
   alias OpenApiSpex.Schema
   alias OpenApiSpexTest.Schemas
 
-  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  plug OpenApiSpex.Plug.CastAndValidate
 
   @doc "Echo body params"
   @doc [

@@ -3,7 +3,7 @@ defmodule OpenApiSpexTest.JsonRenderErrorController do
   use OpenApiSpex.Controller
   alias OpenApiSpexTest.Schemas
 
-  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  plug OpenApiSpex.Plug.CastAndValidate
 
   @doc """
   List users

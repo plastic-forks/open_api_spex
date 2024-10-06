@@ -382,13 +382,10 @@ Add the `OpenApiSpex.Plug.CastAndValidate` plug to a controller to validate requ
 
 ```elixir
 # Phoenix
-plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+plug OpenApiSpex.Plug.CastAndValidate
 # Plug
-plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true, operation_id: "UserController.create"
+plug OpenApiSpex.Plug.CastAndValidate, operation_id: "UserController.create"
 ```
-
-The `json_render_error_v2: true` is a work-around for a bug in the format of the default error renderer.
-It will be not needed in version 4.0.
 
 For Phoenix apps, the `operation_id` can be inferred from the contents of `conn.private`.
 
@@ -405,7 +402,7 @@ defmodule MyAppWeb.UserController do
 
   alias MyAppWeb.Schemas.{UserParams, UserResponse}
 
-  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  plug OpenApiSpex.Plug.CastAndValidate
 
   operation :update,
     summary: "Update user",

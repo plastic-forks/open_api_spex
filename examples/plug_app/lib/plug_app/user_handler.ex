@@ -8,7 +8,6 @@ defmodule PlugApp.UserHandler do
     use Plug.Builder
 
     plug OpenApiSpex.Plug.CastAndValidate,
-      json_render_error_v2: true,
       operation_id: "UserHandler.Index"
 
     plug :index
@@ -45,7 +44,6 @@ defmodule PlugApp.UserHandler do
     use Plug.Builder
 
     plug OpenApiSpex.Plug.CastAndValidate,
-      json_render_error_v2: true,
       operation_id: "UserHandler.Show"
 
     plug :load
@@ -97,7 +95,6 @@ defmodule PlugApp.UserHandler do
     use Plug.Builder
 
     plug OpenApiSpex.Plug.CastAndValidate,
-      json_render_error_v2: true,
       operation_id: "UserHandler.Create"
 
     plug :create

@@ -13,7 +13,7 @@ defmodule PhoenixAppWeb.UserController do
   alias PhoenixApp.{Accounts, Accounts.User}
   alias PhoenixAppWeb.Schemas
 
-  plug OpenApiSpex.Plug.CastAndValidate, json_render_error_v2: true
+  plug OpenApiSpex.Plug.CastAndValidate
 
   tags ["users"]
   security [%{}, %{"oauth" => ["user:email"]}]
