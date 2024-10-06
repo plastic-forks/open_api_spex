@@ -27,15 +27,6 @@ defmodule OpenApiSpex.Server do
   @doc """
   Builds a Server from a phoenix Endpoint module
   """
-  @deprecated "Use from_endpoint/1 instead"
-  @spec from_endpoint(module, ignored :: any()) :: t
-  def from_endpoint(endpoint, _opts) do
-    from_endpoint(endpoint)
-  end
-
-  @doc """
-  Builds a Server from a phoenix Endpoint module
-  """
   @spec from_endpoint(module) :: t
   def from_endpoint(endpoint) do
     uri = endpoint.struct_url()
